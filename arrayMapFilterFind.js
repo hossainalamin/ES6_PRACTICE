@@ -9,3 +9,7 @@ console.log(filterValue);
 let findValue = numbers.find((x) => x<2);
 console.log(findValue);
 
+let arraNumber = [2,3,4,5,6,7];
+let valueFilter = arraNumber.filter((x)=> x>4);
+console.log(valueFilter);
+
