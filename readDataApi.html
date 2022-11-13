@@ -9,13 +9,24 @@
 <body>
     <h1 id="activity"></h1>
     <h3>Link to Visit : </h3><a href="">Visit Here</a>
+    <h2 id="name"></h2>
+    <h3 id="country"></h3>
+    <div id="pic"></div>
     <script>
         function readActivities()
         {
             fetch('http://www.boredapi.com/api/activity/')
             .then(res => res.json())
             .then(data => {
-                document.getElementById('activity').innerText(data.ac)
+                document.getElementById('activity').innerText = data.activity
+            });
+
+            fetch('https://randomuser.me/api/')
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data);
+                document.getElementById('name').innerText = `${data.results[0].name.title}  ${data.results[0].name.first} ${data.results[0].name.last}`
+                document.getElementById('country').innerText = `${data.results[0].phone}`
             });
         }
         readActivities();
