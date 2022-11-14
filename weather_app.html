@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+</head>
+<style>
+    #val{
+        justify-content: center;
+        display: inline;
+        margin-left: 500px;
+    }
+</style>
+<body>
+    <div id="container">
+        <div id="head" style="height: 100px; background-color: brown;">
+            <input type="text" name="val" id="val" placeholder="Enter the city" style="width: 300px; height: 29px;">
+            <button style="height: 39px;" onclick="getWeatherData()">Search</button>
+        </div>
+        <div id="body" style="height: 500px; background-color: darkgray;">
+            <h1 style="margin-left: 500px;" >CITY : <span id="city"></span></h1>
+            <h2 style="margin-left: 500px;">Weather :  <span id="forcast"></span></h2>
+            <h3 style="margin-left: 500px;">Temparatur :  <span id="temp"> </span>c </h3>
+        </div>
+    </div>
+    <script>
+        function getWeatherData()
+        {
+            let searchVal = document.getElementById('val').value;
+            let apiKey = "10f57fd53536068a9cee30782a8e299c";
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchVal}&appid=${apiKey}&units=metric`;
+         
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('city').innerText = data.name
+                document.getElementById('forcast').innerText = data.weather[0].main
+                document.getElementById('temp').innerText = data.main.temp
+            });
+
+            
+            // fetch('http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}')
+
+
+        }
+    </script>
+</body>
+</html>
