@@ -12,12 +12,18 @@
         display: inline;
         margin-left: 500px;
     }
+    .🇵🇾{
+        background-color:red;
+    }
 </style>
 <body>
     <div id="container">
+
+        <p id="para">green</p>
         <div id="head" style="height: 100px; background-color: brown;">
             <input type="text" name="val" id="val" placeholder="Enter the city" style="width: 300px; height: 29px;">
             <button style="height: 39px;" onclick="getWeatherData()">Search</button>
+            <button style="height: 39px;" onclick="getData()">Search</button>
         </div>
         <div id="body" style="height: 500px; background-color: darkgray;">
             <h1 style="margin-left: 500px;" >CITY : <span id="city"></span></h1>
@@ -26,6 +32,13 @@
         </div>
     </div>
     <script>
+        function getData(){
+            var para = document.getElementById('para');
+            let text = para.innerText;
+            this.className = 'py';
+            console.log(text);
+        }
+    
         function getWeatherData()
         {
             let searchVal = document.getElementById('val').value;
